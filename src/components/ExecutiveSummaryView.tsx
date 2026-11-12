@@ -255,15 +255,17 @@ export function ExecutiveSummaryView({ onNavigate }: ExecutiveSummaryViewProps) 
               กรกฎาคม 2569 ถึง 38.02% (395 จาก 1,039 นัด) ผู้บริหารควรตรวจสอบสาเหตุวันหยุดยาว/ฤดูฝนและเพิ่มระบบเตือนนัดล่วงหน้า
             </InsightCallout>
 
-            <InsightCallout title="3. โรคเรื้อรัง 3 อันดับแรกครองสัดส่วนกว่า 75%" tone="sky">
-              จาก 672 รหัสโรค (11,769 รายการ) พบ I10 ความดันโลหิตสูง (4,993 ครั้ง), เบาหวาน E149+E119 (2,337 ครั้ง)
-              และไขมันในเลือด E789+E785 (1,572 ครั้ง) โดยผู้ป่วยเบาหวานถึง {EXECUTIVE_METRICS.dmWithHtPct.toFixed(1)}%
+            <InsightCallout title="3. โรคเรื้อรัง 3 กลุ่มหลักครองสัดส่วนกว่า 63%" tone="sky">
+              จาก 672 รหัสโรค ({formatNum(EXECUTIVE_METRICS.totalIcdMainVisits)} รายการ) พบ I10 ความดันโลหิตสูง (4,993 ครั้ง),
+              เบาหวาน E149+E119 (2,337 ครั้ง) และไขมันในเลือด E789+E785 (1,572 ครั้ง) คิดเป็น{' '}
+              {EXECUTIVE_METRICS.top3NcdGroupPct.toFixed(1)}% โดยผู้ป่วยเบาหวานถึง {EXECUTIVE_METRICS.dmWithHtPct.toFixed(1)}%
               มีโรคความดันโลหิตสูงร่วมด้วย (DM_HT)
             </InsightCallout>
 
             <InsightCallout title="4. คุณภาพเวชระเบียน &amp; รหัสจำหน่ายไม่สมบูรณ์" tone="amber">
               พบการลงจำหน่าย "ไม่มี CloseVisit Type" ในคลินิกหลัก {formatNum(EXECUTIVE_METRICS.noCloseVisitMain)} ครั้ง
-              และในห้องหัตถการ 14081 สูงถึง {formatNum(EXECUTIVE_METRICS.noClose14081_2569)} ครั้ง (23.1% ของยอดปี 69)
+              และในห้องหัตถการ 14081 สูงถึง {formatNum(EXECUTIVE_METRICS.noClose14081_2569)} ครั้ง (
+              {formatPct((EXECUTIVE_METRICS.noClose14081_2569 / EXECUTIVE_METRICS.total14081Visits2569) * 100, 1)} ของยอดปี 69)
               รวมถึงรหัสหัตถการที่ไม่มีคำอธิบายในระบบ 112 ครั้ง ควรจัดอบรมการปิดสิทธิ/ลงรหัสเพื่อลดการตกหล่นในการเบิกจ่าย
             </InsightCallout>
           </div>

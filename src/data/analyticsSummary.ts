@@ -50,7 +50,15 @@ export const EXECUTIVE_METRICS = (() => {
   const otherGrowth4Y = ((ins2569.other - ins2566.other) / ins2566.other) * 100;
 
   const totalIcdMainVisits = ICD10_MAIN_2569.reduce((s, r) => s + r.count, 0);
+  const top10IcdVisits = ICD10_MAIN_2569.slice(0, 10).reduce((s, r) => s + r.count, 0);
+  const top10IcdPct = (top10IcdVisits / totalIcdMainVisits) * 100;
+  const top3NcdGroupVisits = ICD10_MAIN_2569.slice(0, 5).reduce((s, r) => s + r.count, 0);
+  const top3NcdGroupPct = (top3NcdGroupVisits / totalIcdMainVisits) * 100;
+
   const totalDispositionVisits = DISPOSITION_MONTHLY_2569.reduce((s, r) => s + r.total, 0);
+  const normalDrugReturnVisits =
+    DISPOSITION_MONTHLY_2569.find((r) => r.closeType === 'ตรวจเสร็จและรับยากลับบ้าน')?.total ?? 0;
+  const normalDrugReturnPct = (normalDrugReturnVisits / totalDispositionVisits) * 100;
   const noCloseVisitMain =
     DISPOSITION_MONTHLY_2569.find((r) => r.closeType === 'ไม่มี CloseVisit Type')?.total ?? 0;
 
@@ -115,7 +123,10 @@ export const EXECUTIVE_METRICS = (() => {
     otherShare2569,
     otherGrowth4Y,
     totalIcdMainVisits,
+    top10IcdPct,
+    top3NcdGroupPct,
     totalDispositionVisits,
+    normalDrugReturnPct,
     noCloseVisitMain,
     emsTotal,
     teleDispositionTotal,

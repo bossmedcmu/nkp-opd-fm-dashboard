@@ -128,7 +128,7 @@ export function MorbidityAndDispositionView() {
           title="ความหลากหลายรหัสโรค (ICD-10)"
           value={`${formatNum(ICD10_MAIN_2569.length)} โรค`}
           subtitle={`ครอบคลุม ${formatNum(EXECUTIVE_METRICS.totalIcdMainVisits)} รายการวินิจฉัยในปีงบฯ 2569`}
-          trendLabel="10 อันดับแรก = 76.2%"
+          trendLabel={`10 อันดับแรก = ${formatPct(EXECUTIVE_METRICS.top10IcdPct, 1)}`}
           trendTone="neutral"
           icon={<Stethoscope className="h-5 w-5" />}
           accent="emerald"
@@ -145,7 +145,7 @@ export function MorbidityAndDispositionView() {
         <KpiCard
           title="รูปแบบการจำหน่ายผู้ป่วยทั้งหมด"
           value={`${DISPOSITION_MONTHLY_2569.length} รูปแบบ`}
-          subtitle={`รวม ${formatNum(EXECUTIVE_METRICS.totalDispositionVisits)} รายการ (รับยากลับบ้านปกติ 81.7%)`}
+          subtitle={`รวม ${formatNum(EXECUTIVE_METRICS.totalDispositionVisits)} รายการ (รับยากลับบ้านปกติ ${formatPct(EXECUTIVE_METRICS.normalDrugReturnPct, 1)})`}
           trendLabel="Consult/ส่งต่อ ER ครบ"
           trendTone="positive"
           icon={<GitBranch className="h-5 w-5" />}
@@ -184,7 +184,7 @@ export function MorbidityAndDispositionView() {
                   type="category"
                   dataKey="label"
                   width={185}
-                  tick={{ fontSize: 11, fill: '#475569' }}
+                  tick={{ fontSize: 11, fill: '#64748b' }}
                 />
                 <Tooltip content={<CustomChartTooltip valueSuffix=" ครั้ง" />} />
                 <Bar dataKey="count" name="จำนวนครั้ง" radius={[0, 6, 6, 0]} barSize={18}>
@@ -202,7 +202,7 @@ export function MorbidityAndDispositionView() {
           <div className="flex flex-col justify-between gap-4 xl:col-span-5">
             <InsightCallout title="วิเคราะห์สัดส่วนกลุ่มโรคสำคัญ" tone="emerald">
               กลุ่มโรค NCD (ความดันโลหิตสูง, เบาหวาน, ไขมันในเลือดสูง) รวมกันมีสัดส่วนสูงถึง{' '}
-              <strong>75.6%</strong> ของปริมาณการวินิจฉัยทั้งหมด ขณะเดียวกันพบกลุ่มโรคผู้สูงอายุชัดเจน เช่น{' '}
+              <strong>{formatPct(EXECUTIVE_METRICS.top3NcdGroupPct, 1)}</strong> ของปริมาณการวินิจฉัยทั้งหมด ขณะเดียวกันพบกลุ่มโรคผู้สูงอายุชัดเจน เช่น{' '}
               <strong>R54 ชราภาพ (150 ครั้ง)</strong>, <strong>F067 สมองเสื่อมระยะต้น (144 ครั้ง)</strong>,{' '}
               และกลุ่มปวดกล้ามเนื้อ/ข้อเข่าเสื่อม/กระดูกพรุน
             </InsightCallout>

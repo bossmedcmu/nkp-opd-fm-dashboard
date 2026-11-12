@@ -212,8 +212,8 @@ export function ProcedureAndTelemedView() {
                 <YAxis
                   type="category"
                   dataKey="closeType"
-                  width={150}
-                  tick={{ fontSize: 10, fill: '#475569' }}
+                  width={165}
+                  tick={{ fontSize: 10, fill: '#64748b' }}
                 />
                 <Tooltip content={<CustomChartTooltip valueSuffix=" ครั้ง" />} />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
